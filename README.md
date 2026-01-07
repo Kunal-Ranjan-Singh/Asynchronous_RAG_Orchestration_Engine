@@ -84,8 +84,8 @@ Clone the repository and install the Python dependencies.
 
 ```bash
 # Clone the repository
-git clone [https://github.com/yourusername/synapse-engine.git](https://github.com/yourusername/synapse-engine.git)
-cd synapse-engine
+git clone https://github.com/Kunal-Ranjan-Singh/Asynchronous_RAG_Orchestration_Engine.git
+cd Asynchronous_RAG_Orchestration_Engine
 
 # Create a virtual environment
 python -m venv venv
