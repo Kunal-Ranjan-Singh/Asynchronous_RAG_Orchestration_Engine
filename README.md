@@ -96,34 +96,47 @@ pip install -r requirements.txt
 ```
 
 
-### 3. Environment Config
+## 3. Environment Config
+
+```env
 # OpenAI API Key (Required for Embeddings & Chat)
 OPENAI_API_KEY="sk-..."
 
 # Qdrant Database Config (Defaults for Local Docker)
 QDRANT_URL="http://localhost:6333"
-QDRANT_API_KEY="" 
+QDRANT_API_KEY=""
 
 # Inngest Config (Defaults for Local Dev Server)
 INNGEST_EVENT_KEY="local"
 INNGEST_SIGNING_KEY="local"
+```
 
 ---
 
-### 4. Running the Application
-To run the full system locally, you need to spin up three separate services. Run each command in a separate terminal window.
+## 4. Running the Application
 
-# Terminal 1: Start the Vector Database (Docker)
+To run the full system locally, you need to spin up **three separate services**.  
+Run each command in a **separate terminal window**.
+
+### Terminal 1: Start the Vector Database (Docker)
+
 This starts the Qdrant server instance.
+
+```bash
 docker run -p 6333:6333 qdrant/qdrant
+```
 
-# Terminal 2: Start the Inngest Dev Server
+### Terminal 2: Start the Inngest Dev Server
 This starts the dashboard to visualize your event queues.
+```bash
 npx inngest-cli@latest dev
+```
 
-# Terminal 3: Start the Backend API
+### Terminal 3: Start the Backend API
 This starts your FastAPI application.
+```bash
 uvicorn main:app --reload
+```
 
 ---
 
@@ -131,21 +144,21 @@ uvicorn main:app --reload
 ## 🧪 How to Use
 Once all terminals are running, the system is live.
 
-# 1. Access the API Dashboard
+### 1. Access the API Dashboard
 Open your browser to: http://localhost:8000/docs
 This is the Swagger UI, where you can test API endpoints directly.
 
-# 2. Upload a Document (Async Ingestion)
+### 2. Upload a Document (Async Ingestion)
 Expand the POST /upload endpoint.
 Upload a PDF file.
 Check Terminal 2 (Inngest): You will see the event app/process_file trigger immediately. The API returns success while the background worker processes the file.
 
-# 3. Chat with your Data
+### 3. Chat with your Data
 Expand the POST /chat endpoint.
 Enter a query related to your uploaded PDF.
 The system will retrieve the relevant vector chunks and generate a precise answer.
 
 ---
 
-##📄 License
+## 📄 License
 This project is open-source and available under the MIT License.
